@@ -81,78 +81,106 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black, // Set background color to black
-      appBar: AppBar(
-        title: Text(
-          'Calculator: Step 1: Click 1 number Step 2: Click Operand Step 4: Click 2nd number Step 5: Click "=" Step 6: "C" to clear',
-          style: TextStyle(
-            color: Colors.blue, // Set title text color to blue
-            fontSize: 36.0, // Set title text size to 36
-            fontWeight: FontWeight.bold, // Make the title bold
-          ),
-        ),
-        backgroundColor: Colors.black, // Set AppBar background to black
-      ),
-      body: Column(
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: Colors.black, // Set background color to black
+    appBar: AppBar(
+      backgroundColor: Colors.black, // Set AppBar background to black
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(16.0),
-              alignment: Alignment.bottomRight,
-              child: Text(
-                _display,
-                style: TextStyle(
-                  fontSize: 36.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue, // Set text color to blue
-                ),
-              ),
+          Text(
+            'Calculator',
+            style: TextStyle(
+              color: Colors.blue, // Set title text color to blue
+              fontSize: 36.0, // Set title text size to 36
+              fontWeight: FontWeight.bold, // Make the title bold
             ),
           ),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildNumberButton('7'),
-              _buildNumberButton('8'),
-              _buildNumberButton('9'),
-              _buildOperatorButton('/'),
-            ],
+          SizedBox(height: 8.0), // Add some space between the title and steps
+          Text(
+            'Steps:',
+            style: TextStyle(
+              color: Colors.blue, // Set steps text color to blue
+              fontSize: 20.0, // Set steps text size
+              fontWeight: FontWeight.bold, // Make the steps bold
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildNumberButton('4'),
-              _buildNumberButton('5'),
-              _buildNumberButton('6'),
-              _buildOperatorButton('*'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildNumberButton('1'),
-              _buildNumberButton('2'),
-              _buildNumberButton('3'),
-              _buildOperatorButton('-'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildNumberButton('0'),
-              _buildOperatorButton('+'),
-              _buildCalculateButton(),
-              _buildOperatorButton('C'),
-            ],
+          SizedBox(height: 4.0), // Space between Steps header and the list
+          Text(
+            '1. Click 1st number\n'
+            '2. Click Operand (+,-,*,/)\n'
+            '3. Click 2nd number\n'
+            '4. Click "="\n'
+            '5. Click "C" to clear',
+            style: TextStyle(
+              color: Colors.blue, // Set steps text color to blue
+              fontSize: 16.0, // Set steps text size
+            ),
           ),
         ],
       ),
-    );
-  }
+      toolbarHeight: 180.0, // Set a custom height for the AppBar
+    ),
+    body: Column(
+      children: [
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(16.0),
+            alignment: Alignment.bottomRight,
+            child: Text(
+              _display,
+              style: TextStyle(
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue, // Set text color to blue
+              ),
+            ),
+          ),
+        ),
+        Divider(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildNumberButton('7'),
+            _buildNumberButton('8'),
+            _buildNumberButton('9'),
+            _buildOperatorButton('/'),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildNumberButton('4'),
+            _buildNumberButton('5'),
+            _buildNumberButton('6'),
+            _buildOperatorButton('*'),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildNumberButton('1'),
+            _buildNumberButton('2'),
+            _buildNumberButton('3'),
+            _buildOperatorButton('-'),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildNumberButton('0'),
+            _buildOperatorButton('+'),
+            _buildCalculateButton(),
+            _buildOperatorButton('C'),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
 
   // Number button widget with blue text
   Widget _buildNumberButton(String value) {
