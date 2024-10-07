@@ -86,7 +86,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return Scaffold(
       backgroundColor: Colors.black, // Set background color to black
       appBar: AppBar(
-        title: Text('Calculator'),
+        title: Text(
+          'Calculator: Step 1: Click 1 number Step 2: Click Operand Step 4: Click 2nd number Step 5: Click "=" Step 6: "C" to clear',
+          style: TextStyle(
+            color: Colors.blue, // Set title text color to blue
+            fontSize: 36.0, // Set title text size to 36
+            fontWeight: FontWeight.bold, // Make the title bold
+          ),
+        ),
         backgroundColor: Colors.black, // Set AppBar background to black
       ),
       body: Column(
