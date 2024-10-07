@@ -32,7 +32,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   void _onOperatorPressed(String operator) {
-    if (_currentValue.isEmpty) return; // Prevent operator press without number
+    if (_currentValue.isEmpty) return;
     setState(() {
       _operator = operator;
       _result = double.tryParse(_currentValue) ?? 0;
@@ -41,7 +41,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   void _onCalculatePressed() {
-    if (_currentValue.isEmpty || _operator.isEmpty) return; // Prevent empty calculation
+    if (_currentValue.isEmpty || _operator.isEmpty) return;
     setState(() {
       double secondOperand = double.tryParse(_currentValue) ?? 0;
 
@@ -84,8 +84,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black, // Set background color to black
       appBar: AppBar(
         title: Text('Calculator'),
+        backgroundColor: Colors.black, // Set AppBar background to black
       ),
       body: Column(
         children: [
@@ -95,7 +97,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               alignment: Alignment.bottomRight,
               child: Text(
                 _display,
-                style: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 36.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue, // Set text color to blue
+                ),
               ),
             ),
           ),
@@ -141,16 +147,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 
+  // Number button widget with blue text
   Widget _buildNumberButton(String value) {
     return TextButton(
       onPressed: () => _onNumberPressed(value),
       child: Text(
         value,
-        style: TextStyle(fontSize: 24.0),
+        style: TextStyle(
+          fontSize: 24.0,
+          color: Colors.blue, // Set text color to blue
+        ),
       ),
     );
   }
 
+  // Operator button widget with blue text
   Widget _buildOperatorButton(String value) {
     return TextButton(
       onPressed: () {
@@ -162,17 +173,24 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       },
       child: Text(
         value,
-        style: TextStyle(fontSize: 24.0),
+        style: TextStyle(
+          fontSize: 24.0,
+          color: Colors.blue, // Set text color to blue
+        ),
       ),
     );
   }
 
+  // Calculate button widget with blue text
   Widget _buildCalculateButton() {
     return TextButton(
       onPressed: () => _onCalculatePressed(),
       child: Text(
         '=',
-        style: TextStyle(fontSize: 24.0),
+        style: TextStyle(
+          fontSize: 24.0,
+          color: Colors.blue, // Set text color to blue
+        ),
       ),
     );
   }
